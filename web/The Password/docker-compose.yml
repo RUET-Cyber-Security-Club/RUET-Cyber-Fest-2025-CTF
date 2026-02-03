@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: sqli-rcsc-2025
+    ports:
+      - "5500:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      TZ: "Asia/Dhaka"
+    restart: unless-stopped

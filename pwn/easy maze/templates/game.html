@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="status" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+    <div>
+        Player:
+        <strong>
+            {% if user %}
+                {{ user['username'] }}
+            {% else %}
+                Player
+            {% endif %}
+        </strong>
+    </div>
+    <div>
+        Time remaining:
+        <span class="timer">{{ remaining_seconds }}</span>s
+    </div>
+</div>
+
+<div class="game-layout">
+    <!-- Maze -->
+    <div class="maze-wrapper">
+        <table class="maze">
+            {% for row in grid %}
+            <tr>
+                {% for cell in row %}
+                {% set cls = "" %}
+                {% if cell == "#" %}{% set cls = "wall" %}
+                {% elif cell == " " %}{% set cls = "path" %}
+                {% elif cell == "S" %}{% set cls = "start" %}
+                {% elif cell == "F" %}{% set cls = "finish" %}
+                {% elif cell == "*" %}{% set cls = "player" %}
+                {% endif %}
+                <td class="{{ cls }}">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% if flag %}
+        <div class="flag-box">
+            Flag: {{ flag }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Controls -->
+    <div class="dpad-wrapper">
+        <div style="font-size:0.9rem; color:var(--text-muted);">
+            Use only the buttons. No keyboard controls available.<br>
+            You must finish within 40 seconds.
+        </div>
+
+        <form id="move-form" method="post" action="{{ url_for('move') }}">
+            <input type="hidden" name="direction" id="direction-input" value="">
+            <div class="dpad-grid">
+                <button type="button" class="btn empty" aria-hidden="true"></button>
+                <button type="button" data-dir="w" class="btn">W</button>
+                <button type="button" class="btn empty" aria-hidden="true"></button>
+
+                <button type="button" data-dir="a" class="btn">A</button>
+                <button type="button" class="btn empty" aria-hidden="true"></button>
+                <button type="button" data-dir="d" class="btn">D</button>
+
+                <button type="button" class="btn empty" aria-hidden="true"></button>
+                <button type="button" data-dir="s" class="btn">S</button>
+                <button type="button" class="btn empty" aria-hidden="true"></button>
+            </div>
+        </form>
+
+        <div style="margin-top:12px; font-size:0.8rem; color:var(--text-muted);">
+            <ul style="margin:0 0 0 18px; padding:0;">
+                <li>Touching a wall sends you back to the start.</li>
+                <li>Total time limit: 40 seconds per run (checked on server).</li>
+                <li>All moves are logged.</li>
+                <li>Once you unlock the flag it stays visible for your account.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+// Button-only movement (keyboard disabled)
+document.querySelectorAll('#move-form [data-dir]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const dir = btn.getAttribute('data-dir');
+        const input = document.getElementById('direction-input');
+        input.value = dir;
+        document.getElementById('move-form').submit();
+    });
+});
+</script>
+
+{% endblock %}

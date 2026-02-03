@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  chall1576:
+    build: .
+    container_name: chall_1576
+    ports:
+      - "1576:1576"
+    restart: unless-stopped

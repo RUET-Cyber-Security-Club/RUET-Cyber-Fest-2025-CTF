@@ -1,0 +1,6 @@
+desc: Creator has a fond of listening story. Tell him a story to get some surprise.
+	nc port 1576
+
+	flag-format: RCSC{some_text}
+
+[ N.B: No file will be included here ]

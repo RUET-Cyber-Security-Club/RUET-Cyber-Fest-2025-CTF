@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-4 hero">
+  <h2 class="mb-1">RCSC Cyber Fest 2025</h2>
+  <div class="text-muted">Welcome to your dashboard. Explore posts, check notifications, and manage your profile.</div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-header">Latest Posts</div>
+  <ul class="list-group list-group-flush">
+    {% for p in posts %}
+      <li class="list-group-item">
+        <strong>{{ p.title }}</strong>
+        <div class="small text-muted">{{ p.created_at }}</div>
+        <div>{{ p.content }}</div>
+      </li>
+    {% else %}
+      <li class="list-group-item">No posts yet.</li>
+    {% endfor %}
+  </ul>
+  </div>
+{% endblock %}

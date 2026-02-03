@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="card game">
+    <h2>Tap the Coin</h2>
+    <div class="stats">
+      <div>Points: <span id="points">{{ points }}</span></div>
+      <div>Flag cost: <span id="cost">{{ cost }}</span></div>
+    </div>
+
+    <div id="coin" class="coin" title="Click me!">🪙</div>
+
+    <div class="actions">
+      <button id="buyBtn" {% if points < cost and not has_flag %}disabled{% endif %}>Purchase Flag</button>
+    </div>
+
+    <div id="flagBox" class="flag-box" {% if not has_flag %}style="display:none"{% endif %}>
+      {% if has_flag %}
+        <div class="flag">{{ 'RCSC{Tap_Tap_is_fun}' }}</div>
+      {% else %}
+        <div class="flag"></div>
+      {% endif %}
+    </div>
+
+    <p class="hint muted">Hint: The server trusts what the client says about how many points to add per click. Hmmm…</p>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

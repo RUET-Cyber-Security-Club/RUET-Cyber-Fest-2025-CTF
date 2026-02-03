@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  easy-calculator:
+    build: .
+    container_name: easy-calculator-ctf
+    ports:
+      - "2487:2487"
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

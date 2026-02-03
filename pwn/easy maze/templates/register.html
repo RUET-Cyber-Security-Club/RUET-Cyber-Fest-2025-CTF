@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Register</h2>
+
+<form method="post">
+    <div class="form-field">
+        <label>Username</label>
+        <input name="username" required autocomplete="username">
+    </div>
+    <div class="form-field">
+        <label>Password</label>
+        <input name="password" type="password" required autocomplete="new-password">
+    </div>
+    <button type="submit" class="btn">Create account</button>
+    <a href="{{ url_for('login') }}" class="btn btn-secondary" style="margin-left:8px;">Back to login</a>
+</form>
+{% endblock %}

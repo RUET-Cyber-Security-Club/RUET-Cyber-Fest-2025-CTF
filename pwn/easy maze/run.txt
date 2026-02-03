@@ -1,0 +1,7 @@
+docker build -t maze-ctf .
+
+docker run -d --name maze-ctf -p 5000:5000 maze-ctf
+
+docker logs --tail 50 maze-ctf
+
+docker stop maze-ctf ; docker rm maze-ctf

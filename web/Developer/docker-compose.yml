@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Override in production
+      - SECRET_KEY=${SECRET_KEY:-ctf-dev-secret}
+      - FLAG=${FLAG:-RCSC{4dm1n_Tells_just_t0_b3_easy}}
+      # Optional: override admin password
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-StrongAdm1n!P@ss}
+      # Match local dev behavior
+      - FLASK_ENV=${FLASK_ENV:-development}
+      - FLASK_APP=${FLASK_APP:-app.py}
+    volumes:
+      - ./instance:/app/instance
+    restart: unless-stopped

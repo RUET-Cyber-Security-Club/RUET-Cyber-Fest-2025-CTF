@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: ctf_db_2937
+    environment:
+      POSTGRES_USER: ctf
+      POSTGRES_PASSWORD: ctfpass
+      POSTGRES_DB: ctfdb
+    volumes:
+      - db_data_2937:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ctf -d ctfdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    # In CTF prod, you usually don't need to expose DB to outside:
+    # ports:
+    #   - "5432:5432"
+
+  app:
+    build: .
+    container_name: ctf_app_2937
+    environment:
+      FLASK_ENV: production
+      SECRET_KEY: change-me-in-prod
+      POSTGRES_HOST: db
+      POSTGRES_DB: ctfdb
+      POSTGRES_USER: ctf
+      POSTGRES_PASSWORD: ctfpass
+      POSTGRES_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "2937:2937"
+    restart: unless-stopped
+
+volumes:
+  db_data_2937:

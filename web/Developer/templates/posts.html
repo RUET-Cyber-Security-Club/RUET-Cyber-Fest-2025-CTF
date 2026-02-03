@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex align-items-center mb-3"><h3 class="m-0">Posts</h3></div>
+<div class="list-group">
+  {% for p in posts %}
+    <div class="list-group-item">
+      <h5 class="mb-1">{{ p.title }}</h5>
+      <small class="text-muted">{{ p.created_at }}</small>
+      <p class="mb-1">{{ p.content }}</p>
+    </div>
+  {% else %}
+    <div class="list-group-item">No posts yet.</div>
+  {% endfor %}
+</div>
+{% endblock %}

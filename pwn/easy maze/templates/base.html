@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Maze CTF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="navbar" style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; background:rgba(15,23,42,0.9); border-bottom:1px solid #374151; position:sticky; top:0; z-index:10;">
+    <div class="nav-left" style="display:flex; align-items:center; gap:12px;">
+        <a href="{{ url_for('index') }}" class="title" style="margin:0; text-decoration:none;">Maze CTF</a>
+        <span class="subtitle" style="margin:0;">Reach the exit in 40 seconds.</span>
+    </div>
+    <div class="nav-right" style="display:flex; align-items:center; gap:10px;">
+        {% if session.get('user_id') %}
+            <span class="tag">
+                {% if current_user %}
+                    {{ current_user['username'] }}
+                {% else %}
+                    Player
+                {% endif %}
+            </span>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-secondary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn">Register</a>
+        {% endif %}
+    </div>
+</nav>
+<div class="container">
+    <div class="card">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="flash {{ category }}">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

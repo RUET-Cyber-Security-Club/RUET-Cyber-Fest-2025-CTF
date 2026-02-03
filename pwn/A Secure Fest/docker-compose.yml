@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  fest:
+    build: .
+    container_name: fest_challenge
+    restart: unless-stopped
+    ports:
+      - "9001:9001"
+    # Optional: tighten a bit
+    # read_only: true
+    # cap_drop:
+    #   - ALL

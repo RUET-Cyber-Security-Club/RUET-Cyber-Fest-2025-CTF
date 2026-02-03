@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  maze:
+    build: .
+    container_name: maze_challenge
+    restart: unless-stopped
+    ports:
+      - "9004:9004"
+    environment:
+      MAZE_FLAG: "RCSC{W4lk_Th3_L0ng_M4z3}"
+      SECRET_KEY: "RCSC_maze_ctf_super_secret_key"
+      FLASK_APP: "app.py"
+      FLASK_RUN_HOST: "0.0.0.0"
+      PORT: 9004

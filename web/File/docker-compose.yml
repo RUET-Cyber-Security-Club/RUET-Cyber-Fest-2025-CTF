@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: rcsc_lfi
+    ports:
+      - "7980:80"
+    # No volume mount here → container uses built-in code & flag

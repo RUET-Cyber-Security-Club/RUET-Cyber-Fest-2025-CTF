@@ -1,0 +1,214 @@
+/* assets/css/style.css */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0a0a0f;
+    color: #f2f2f2;
+}
+
+a {
+    color: #4ec3ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Header / Navbar */
+
+.site-header {
+    background: #12121a;
+    border-bottom: 1px solid #202032;
+    padding: 0.75rem 1.5rem;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #0e0e18;
+    padding: 4px;
+    border: 1px solid #26263a;
+}
+
+.site-title h1 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.site-title p {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+    color: #b0b0d0;
+}
+
+.navbar {
+    margin-top: 0.75rem;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    color: #e4e4ff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #63d1ff;
+}
+
+/* Hero */
+
+.hero {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.hero-text p {
+    line-height: 1.6;
+    color: #d0d0e8;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #26263a;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Info cards */
+
+.info-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #151525;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    border: 1px solid #26263a;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* Content sections */
+
+.content-section {
+    margin-top: 2rem;
+    background: #151525;
+    padding: 1.5rem 1.75rem;
+    border-radius: 10px;
+    border: 1px solid #26263a;
+}
+
+.content-section h2 {
+    margin-top: 0;
+}
+
+.content-section ul {
+    padding-left: 1.25rem;
+}
+
+/* Contact form */
+
+.contact-form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #0f0f1a;
+    border: 1px solid #26263a;
+    color: #f2f2ff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.contact-form button {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background: #4444ff;
+    color: white;
+    font-weight: 600;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Messages */
+
+.error {
+    color: #ff6b6b;
+}
+
+.info {
+    color: #ffd166;
+}
+
+/* Footer */
+
+.site-footer {
+    margin-top: 2.5rem;
+    padding: 1rem 1.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #b0b0d0;
+    border-top: 1px solid #202032;
+    background: #12121a;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+}

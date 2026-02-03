@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: #222;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #eee;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #181818;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1, h2, h3 {
+    color: #ffcc00;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: #222;
+    color: #eee;
+}
+
+button, input[type="submit"] {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #ffcc00;
+    color: #000;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #f5b800;
+}
+
+.blog-post {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
